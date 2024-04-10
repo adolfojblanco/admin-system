@@ -18,11 +18,15 @@
 
 ---
 
-### Run a project:
+### Run a Django project:
 1.  run server: python manage.py runserver 
 2.  run make migrations: python manage.py makemigrations
 3.  run migrations: python manage.py migrate
 4.  create super user python manage.py createsuperuser
+
+---
+### Run a Angular project:
+1.  ng run serve
 
 ---
 
