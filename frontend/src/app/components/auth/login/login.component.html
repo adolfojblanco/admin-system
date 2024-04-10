@@ -1,0 +1,35 @@
+<div class="row mx-auto">
+  <img src="../../../../assets/img/otreze.png" alt="logo" class="logo mx-auto mt-">
+</div>
+
+<div class="login row">
+  <mat-card class="mx-auto col-md-5 col-lg-5 col-xl-4">
+    <mat-card-title class="text-center p-3">
+      <h1>Inicio de Sesión</h1>
+    </mat-card-title>
+    <form [formGroup]="loginForm" (ngSubmit)="login()" autocomplete="off">
+      <p>
+        <mat-form-field class="full-width" appearance="fill">
+          <input type="text" matInput placeholder="Usuario" formControlName="username" class="full-width">
+          <mat-hint *ngIf="isValid('username')">
+            El campo es requerido <strong>Requerido</strong>
+          </mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field class="full-width" appearance="fill">
+          <input type="password" matInput placeholder="Contraseña" formControlName="password">
+          <mat-hint *ngIf="isValid('password')">
+            El campo es requerido <strong>Requerido</strong>
+          </mat-hint>
+        </mat-form-field>
+      </p>
+      <div class="button">
+        <button type="submit" mat-raised-button color="primary" class="my-3 full-width"
+          [disabled]="loginForm.invalid">Entrar</button>
+      </div>
+
+    </form>
+  </mat-card>
+</div>

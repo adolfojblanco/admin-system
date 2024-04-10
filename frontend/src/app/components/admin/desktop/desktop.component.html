@@ -1,0 +1,113 @@
+<div class="row animate__animated animate__fadeIn">
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body d-flex flex-column align-items-center">
+        <p class="h3">Gastos Diarios</p>
+        <p class="text-danger h2">150¢</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body d-flex flex-column align-items-center">
+        <p class="h3">Gastos Diarios</p>
+        <p class="text-danger h2">150¢</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body d-flex flex-column align-items-center">
+        <p class="h3">Gastos Diarios</p>
+        <p class="text-danger h2">150¢</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row my-3 animate__animated animate__fadeIn">
+  <div class="col-12">
+    <mat-divider />
+  </div>
+</div>
+<!-- Task Table -->
+<div class="row animate__animated animate__fadeIn">
+  <div class="col-sm-6">
+    <div class="card">
+      <div
+        class="card-header d-flex justify-content-between align-items-center"
+      >
+        <strong><i class="bi bi-bag-check"></i> Lista de la compra</strong>
+        <!-- Button trigger modal -->
+        <button mat-mini-fab (click)="newShoppingItem()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      <div class="card-body">
+        <div *ngIf="shoppingList.length > 0; else noitems">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Prioridad</th>
+                <th scope="col">Completar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of shoppingList; index as i">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ item.title }}</td>
+                <td>
+                  <mat-icon
+                    [ngClass]="{
+                    'text-danger': item.priority === 'HIGH',
+                    'text-warning': item.priority === 'MEDIUM',
+                    'text-success': item.priority === 'LOW',
+                  }"
+                    >circle</mat-icon
+                  >
+                </td>
+                <td>
+                  <button
+                    mat-mini-fab
+                    color="link"
+                    (click)="completeShoppingItem(item)"
+                  >
+                    <mat-icon>done</mat-icon>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <ng-template #noitems>
+        <div class="text-center">
+          <p class="text-success h3">No tienes compras pendientes</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="col-sm-6 mt-3 mt-md-0 mt-xl-0 mt-xxl-0">
+    <div class="card">
+      <div
+        class="card-header d-flex justify-content-between align-items-center"
+      >
+        <strong><i class="bi bi-list-task"></i> Tareas Pendientes</strong>
+        <button class="btn btn-sm btn-success">
+          <i class="bi bi-plus-lg"></i>
+        </button>
+      </div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <div class="d-flex justify-content-between">
+            <li class="list-group-item">A third item</li>
+            <button class="btn btn-sm btn-outline-danger">Go somewhere</button>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Task Table -->

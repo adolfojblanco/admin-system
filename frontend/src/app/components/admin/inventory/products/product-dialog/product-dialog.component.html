@@ -1,0 +1,77 @@
+<h2 mat-dialog-title>{{ formTitle }}</h2>
+<mat-divider></mat-divider>
+<div class="col-12">
+  <mat-dialog-content class="mat-typography">
+    <form autocomplete="off" class="row" [formGroup]="productForm">
+      <p>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Producto</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="Producto"
+            formControlName="name"
+            class="full-width"
+            required
+          />
+          <mat-hint *ngIf="isValid('name')">
+            {{ getFieldError("name") }}
+          </mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Categoria</mat-label>
+          <mat-select formControlName="category_id">
+            <mat-option
+              *ngFor="let category of categories"
+              [value]="category.id"
+            >
+              {{ category.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Precio de Venta</mat-label>
+          <input
+            type="number"
+            matInput
+            placeholder="Precio de Venta"
+            formControlName="price"
+            class="full-width"
+            required
+          />
+          <mat-hint *ngIf="isValid('price')">
+            {{ getFieldError("price") }}
+          </mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-slide-toggle formControlName="is_active">Activo</mat-slide-toggle>
+      </p>
+
+      <p>
+        <mat-slide-toggle formControlName="has_stock"
+          >Tiene Stock</mat-slide-toggle
+        >
+      </p>
+    </form>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button
+      mat-raised-button
+      color="primary"
+      [mat-dialog-close]="true"
+      (click)="submitForm()"
+      [disabled]="productForm.invalid"
+      *ngIf="productForm.value"
+    >
+      {{ textButton }}
+    </button>
+  </mat-dialog-actions>
+</div>
