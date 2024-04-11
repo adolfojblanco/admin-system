@@ -5,6 +5,7 @@ Otreze base settings for app project.
 from .base import *
 
 SECRET_KEY = os.getenv("SECURED_KEY")
+
 DEBUG = True
 
 ALLOWED_HOSTS = []

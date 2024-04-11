@@ -4,7 +4,10 @@ from datetime import timedelta
 DEBUG = False
 SECRET_KEY = os.getenv("SECURED_KEY")
 
+print(os.getenv("SECURED_KEY"))
+
 ALLOWED_HOSTS = ['*']
+
 CSRF_TRUSTED_ORIGINS = [
     "https://admin.otreze.es",
     "https://www.admin.otreze.es"]
