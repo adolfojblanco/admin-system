@@ -6,14 +6,12 @@ SECRET_KEY = os.getenv("SECURED_KEY")
 
 ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = [
-    "https://admin.otreze.com",
-    "https://www.admin.otreze.com"]
+    "https://admin.otreze.es",
+    "https://www.admin.otreze.es"]
 
 CORS_ALLOWED_ORIGINS = [
-    "admin.otreze.com",
-    "www.admin.otreze.com",
-    "https://admin.otreze.com",
-    "https://www.admin.otreze.com",
+    "https://admin.otreze.es",
+    "https://www.admin.otreze.es"
 ]
 
 SIMPLE_JWT = {
