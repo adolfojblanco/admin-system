@@ -18,6 +18,7 @@ import { AuthService } from '../../../services/auth.service';
   ],
 })
 export class LoginComponent {
+
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
   private toast = inject(HotToastService);
@@ -30,8 +31,18 @@ export class LoginComponent {
   login() {
     this.authService
       .login(this.loginForm.value)
-      .subscribe((res) => console.log(res));
+      .subscribe((res) => {
+        this.loadUserData()
+      });
   }
+
+  loadUserData() {
+    this.authService.getAuthUser().subscribe((res) => {
+      this.toast.success(`Hola, ${res.username}`)
+    })
+  }
+
+
 
   isValid(campo: string) {
     return (

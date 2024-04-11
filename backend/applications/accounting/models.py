@@ -34,18 +34,22 @@ class Movement(models.Model):
         ("IN", "Entrada"),
         ("OUT", "Salida"),
     ]
+
     STATUS = [
         ("PAID", "Pagado"),
         ("PENDING", "Pendiente"),
     ]
+
     name = models.CharField('Gasto', max_length=200)
     type = models.CharField('Tipo de Gasto',
                             choices=MOVEMENT_TYPE,
-                            default="OUT"
+                            default="OUT",
+                            max_length = 10
                             )
     status = models.CharField('Estado de Gasto',
                               choices=STATUS,
-                              default="PENDIENTE"
+                              default="PENDIENTE",
+                              max_length=10
                               )
     amount = models.DecimalField('Monto', max_digits=5, decimal_places=2)
     date = models.DateField('Fecha', auto_now_add=True)

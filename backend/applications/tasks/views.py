@@ -4,8 +4,8 @@ from django.template.loader import get_template
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .models import ShoppingList
-from .serializer import ShoppingListSerializer
+from .models import ShoppingList, TaskList
+from .serializer import ShoppingListSerializer, TaskListSerializer
 
 
 @api_view(["GET", "POST"])
@@ -54,3 +54,29 @@ def shopping_item_email(item):
 
     except Exception as e:
         print(e)
+
+
+@api_view(["GET", "POST"])
+def task_list_view(request):
+    if request.method == 'GET':
+        lists = TaskList.objects.filter(is_complete=False)[:5]
+        lists_serializer = TaskListSerializer(lists, many=True)
+        return Response(lists_serializer.data)
+
+    elif request.method == 'POST':
+        item_serializer = TaskListSerializer(data=request.data)
+        if item_serializer.is_valid():
+            item_serializer.save()
+            return Response(item_serializer.data)
+        return Response(item_serializer.errors)
+
+
+@api_view(["PUT"])
+def complete_task(request, pk=None):
+    if request.method == "PUT":
+        item = ShoppingList.objects.filter(id=pk).first()
+        item_serializer = ShoppingListSerializer(item, request.data)
+        if item_serializer.is_valid():
+            item_serializer.save()
+            return Response(item_serializer.data)
+        return Response(item_serializer.errors)

@@ -34,9 +34,9 @@ def register_mail(email):
 
 
 class Client(models.Model):
-    name = models.CharField('Nombre', null=False, blank=False)
-    email = models.CharField('email', unique=True, null=True, blank=True)
-    phone = models.CharField('Telefono', unique=True, null=True, blank=True)
+    name = models.CharField('Nombre', null=False, blank=False, max_length=100)
+    email = models.CharField('email', unique=True, null=True, blank=True, max_length=100)
+    phone = models.CharField('Telefono', unique=True, null=True, blank=True, max_length=10)
     is_active = models.BooleanField('Activo', default=True)
     term = models.BooleanField('Publicidad', default=False)
 

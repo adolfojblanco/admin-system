@@ -2,10 +2,10 @@
 <mat-divider></mat-divider>
 <div class="col-12">
   <mat-dialog-content class="mat-typography">
-    <form autocomplete="off" class="row" [formGroup]="taskListForm">
+    <form autocomplete="off" class="row" [formGroup]="shoppingListForm">
       <p>
         <mat-form-field class="full-width" appearance="fill">
-          <mat-label>Nueva Tarea</mat-label>
+          <mat-label>Articulo</mat-label>
           <input
             type="text"
             matInput
@@ -14,9 +14,22 @@
             class="full-width"
             required
           />
-          <!-- <mat-hint *ngIf="isValid('title')">
+          <mat-hint *ngIf="isValid('title')">
             El campo es requerido <strong>Requerido</strong>
-          </mat-hint> -->
+          </mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field class="full-width">
+          <mat-label>Selecciona una opción</mat-label>
+          <select matNativeControl formControlName="priority">
+            v v
+            <option value="" selected></option>
+            <option value="LOW">Baja</option>
+            <option value="MEDIUM">Media</option>
+            <option value="HIGH">Alta</option>
+          </select>
         </mat-form-field>
       </p>
     </form>
@@ -28,11 +41,11 @@
     <button
       mat-raised-button
       color="primary"
-      [disabled]="taskListForm.invalid"
+      [disabled]="shoppingListForm.invalid"
       [mat-dialog-close]="true"
-      (click)="newTask()"
+      (click)="newItemShoppingList()"
     >
-      Guardar
+      {{ textButton }}
     </button>
   </mat-dialog-actions>
 </div>

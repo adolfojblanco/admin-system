@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TaskService } from '../../../../services/task.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ShoppingList } from '../../../../models/Task';
+import { HotToastService } from '@ngneat/hot-toast';
 
 @Component({
   selector: 'app-task-dialog',
@@ -11,25 +12,25 @@ import { ShoppingList } from '../../../../models/Task';
 })
 export class TaskDialogComponent {
   public fb = inject(FormBuilder);
+  public toast = inject(HotToastService);
   public taskService = inject(TaskService)
-  public titulo: string = 'Nuevo Item'
-  public textButton: string = 'Nuevo Item'
+  public titulo: string = 'Nueva Tarea'
+
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: ShoppingList) {
     if (data) {
-      this.shoppingListForm.reset(data);
+      this.taskListForm.reset(data);
     }
   }
 
-  public shoppingListForm: FormGroup = this.fb.group({
+  public taskListForm: FormGroup = this.fb.group({
     id: [],
     title: ['', [Validators.required, Validators.minLength(3)]],
-    priority: ['', [Validators.required]],
   })
 
-  newItemShoppingList() {
-    this.taskService.newShoppingListItem(this.shoppingListForm.value).subscribe((res) => {
-
+  newTask() {
+    this.taskService.newTask(this.taskListForm.value).subscribe((res) => {
+      this.toast.success('Tarea resgitrada');
     })
   }
 

@@ -29,6 +29,7 @@
     <mat-divider />
   </div>
 </div>
+
 <!-- Task Table -->
 <div class="row animate__animated animate__fadeIn">
   <div class="col-sm-6">
@@ -83,7 +84,7 @@
       </div>
       <ng-template #noitems>
         <div class="text-center">
-          <p class="text-success h3">No tienes compras pendientes</p>
+          <p class="text-success h3">No tienes pendientes</p>
         </div>
       </ng-template>
     </div>
@@ -94,16 +95,23 @@
       <div
         class="card-header d-flex justify-content-between align-items-center"
       >
-        <strong><i class="bi bi-list-task"></i> Tareas Pendientes</strong>
-        <button class="btn btn-sm btn-success">
-          <i class="bi bi-plus-lg"></i>
+        <strong><i class="bi bi-bag-check"></i> Lista de Tareas</strong>
+        <!-- Button trigger modal -->
+        <button mat-mini-fab color="primary" (click)="newTask()">
+          <mat-icon>add</mat-icon>
         </button>
       </div>
       <div class="card-body">
-        <ul class="list-group list-group-flush">
-          <div class="d-flex justify-content-between">
-            <li class="list-group-item">A third item</li>
-            <button class="btn btn-sm btn-outline-danger">Go somewhere</button>
+        <ul
+          class="list-group list-group-flush"
+          *ngIf="taskList.length > 0; else noitems"
+        >
+          <div
+            class="d-flex justify-content-between mt-2"
+            *ngFor="let task of taskList"
+          >
+            <li class="list-group-item">{{ task.title }}</li>
+            <button class="btn btn-sm btn-outline-danger">Completar</button>
           </div>
         </ul>
       </div>

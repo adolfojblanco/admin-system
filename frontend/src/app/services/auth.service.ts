@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { User } from '../models/User';
 import { HotToastService } from '@ngneat/hot-toast';
@@ -14,7 +14,7 @@ export class AuthService {
   private router = inject(Router);
   private http = inject(HttpClient);
   private toast = inject(HotToastService);
-  constructor() {}
+  constructor() { }
 
   login(user: User): Observable<User> {
     return this.http.post<User>(`${this.urlEndPoint}/login/`, user).pipe(

@@ -11,3 +11,9 @@ export interface ShoppingList {
   is_complete: boolean,
   priority: PriorityType
 }
+
+export interface TaskList {
+  id?: number;
+  title: string;
+  is_complete: boolean,
+}
