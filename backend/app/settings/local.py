@@ -4,6 +4,7 @@ Otreze base settings for app project.
 
 from .base import *
 
+SECRET_KEY = os.getenv("SECURED_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -22,7 +23,7 @@ SIMPLE_JWT = {
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': os.getenv("DB_ENGINE_LOCAL"),
         'NAME': os.getenv("DB_NAME_LOCAL"),
         'USER': os.getenv("DB_USER_LOCAL"),
         'PASSWORD': os.getenv("DB_PASSWORD_LOCAL"),

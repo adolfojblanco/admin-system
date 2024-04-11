@@ -1,13 +1,19 @@
 from .base import *
 from datetime import timedelta
 
-
-DEBUG = True
+DEBUG = False
+SECRET_KEY = os.getenv("SECURED_KEY")
 
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = [
+    "https://admin.otreze.com",
+    "https://www.admin.otreze.com"]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:4200",
+    "admin.otreze.com",
+    "www.admin.otreze.com",
+    "https://admin.otreze.com",
+    "https://www.admin.otreze.com",
 ]
 
 SIMPLE_JWT = {
@@ -23,7 +29,7 @@ SIMPLE_JWT = {
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': os.getenv("DB_ENGINE_PROD"),
         'NAME': os.getenv("DB_NAME_PROD"),
         'USER': os.getenv("DB_USER_PROD"),
         'PASSWORD': os.getenv("DB_PASSWORD_PROD"),
@@ -31,7 +37,6 @@ DATABASES = {
         'PORT': os.getenv("DB_PORT_PROD"),
     }
 }
-
 
 EMAIL_BACKEND = os.getenv("EMAIL_BACKEND")
 EMAIL_HOST = os.getenv("EMAIL_HOST")
