@@ -1,14 +1,15 @@
 from .base import *
 from datetime import timedelta
 
-DEBUG = False
+DEBUG = True
 SECRET_KEY = "django-insecure-vu0872#b-96k3zu+97r%p4&y8r#v2xomn@b4a5nn(^-=n4!!es"
 
 ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
     "https://admin.otreze.es",
-    "https://www.admin.otreze.es"]
+    "https://www.admin.otreze.es",
+    "https://api-admin.otreze.es"]
 
 CORS_ALLOWED_ORIGINS = [
     "https://admin.otreze.es",
@@ -39,6 +40,6 @@ EMAIL_BACKEND = os.getenv("EMAIL_BACKEND")
 EMAIL_HOST = os.getenv("EMAIL_HOST")
 EMAIL_PORT = os.getenv("EMAIL_PORT")
 EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS")
-EMAIL_USE_SSL = os.getenv("EMAIL_USE_SSL")
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+EMAIL_ADMIN = os.getenv("EMAIL_ADMIN")
