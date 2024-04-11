@@ -4,7 +4,7 @@ Otreze base settings for app project.
 
 from .base import *
 
-SECRET_KEY = os.getenv("SECURED_KEY")
+SECRET_KEY = "django-insecure-vu0872#b-96k3zu+97r%p4&y8r#v2xomn@b4a5nn(^-=n4!!es"
 
 DEBUG = True
 

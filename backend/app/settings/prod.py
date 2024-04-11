@@ -2,9 +2,7 @@ from .base import *
 from datetime import timedelta
 
 DEBUG = False
-SECRET_KEY = os.getenv("SECURED_KEY")
-
-print(os.getenv("SECURED_KEY"))
+SECRET_KEY = "django-insecure-vu0872#b-96k3zu+97r%p4&y8r#v2xomn@b4a5nn(^-=n4!!es"
 
 ALLOWED_HOSTS = ['*']
 
