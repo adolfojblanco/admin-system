@@ -2,7 +2,7 @@
 <mat-divider></mat-divider>
 <div class="col-12">
   <mat-dialog-content class="mat-typography">
-    <form autocomplete="off" class="row" [formGroup]="taskListForm">
+    <form autocomplete="off" class="row form-floating" [formGroup]="taskListForm">
       <p>
         <mat-form-field class="full-width" appearance="fill">
           <mat-label>Nueva Tarea</mat-label>
@@ -14,9 +14,9 @@
             class="full-width"
             required
           />
-          <!-- <mat-hint *ngIf="isValid('title')">
+          <mat-hint *ngIf="isValid('title')">
             El campo es requerido <strong>Requerido</strong>
-          </mat-hint> -->
+          </mat-hint>
         </mat-form-field>
       </p>
     </form>
