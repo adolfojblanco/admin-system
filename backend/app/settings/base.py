@@ -115,12 +115,12 @@ SHORT_DATE_FORMAT = 'd/m/y'
 TIME_INPUT_FORMATS = "%H:%M:%S"
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
+# static files
+STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static/")]
 
-STATIC_URL = 'backend/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'backend/staticfiles')
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'staticfiles/'), )
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

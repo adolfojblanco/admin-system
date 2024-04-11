@@ -20,12 +20,6 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(hours=6),
 }
 
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': os.getenv("DB_ENGINE_PROD"),

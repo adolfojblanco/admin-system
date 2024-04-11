@@ -1,5 +1,3 @@
-# Created by https://www.toptal.com/developers/gitignore/api/django,python,macos,windows,linux,pycharm,visualstudiocode,node
-# Edit at https://www.toptal.com/developers/gitignore?templates=django,python,macos,windows,linux,pycharm,visualstudiocode,node
 
 ### Django ###
 *.log
@@ -13,6 +11,7 @@ media
 ./vscode/
 ./.env/
 .idea/
+./staticfiles/
 
 **/migrations/**
 
@@ -617,3 +616,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/django,python,macos,windows,linux,pycharm,visualstudiocode,node
+/staticfiles/
