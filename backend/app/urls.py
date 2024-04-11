@@ -10,6 +10,9 @@ from drf_yasg import openapi
 
 from applications.users.router import router_user
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 schema_view = get_schema_view(
     openapi.Info(
         title="Otreze APIDocs",
@@ -35,4 +38,4 @@ urlpatterns = [
     path('redocs/', schema_view.with_ui('redoc',
          cache_timeout=0), name='schema-redoc'),
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

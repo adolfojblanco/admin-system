@@ -20,6 +20,10 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(hours=6),
 }
 
+STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+
 DATABASES = {
     'default': {
         'ENGINE': os.getenv("DB_ENGINE_PROD"),
