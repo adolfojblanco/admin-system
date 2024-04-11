@@ -12,6 +12,7 @@ media
 ./.env/
 .idea/
 ./staticfiles/
+ backend/backend/staticfiles
 
 **/migrations/**
 
