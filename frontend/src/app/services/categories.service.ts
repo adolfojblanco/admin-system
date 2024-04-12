@@ -14,7 +14,7 @@ export class CategoriesService {
 
   /** Get all categories */
   getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(`${this.urlEndPoint}`);
+    return this.http.get<Category[]>(`${this.urlEndPoint}/`);
   }
 
   /** Create a new category */

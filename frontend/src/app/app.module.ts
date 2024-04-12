@@ -9,20 +9,16 @@ import { provideHotToastConfig } from '@ngneat/hot-toast';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 
-import { registerLocaleData } from '@angular/common';
-import localeEs from '@angular/common/locales/es';
-import localeEsExtra from '@angular/common/locales/extra/es';
 import { ServiceWorkerModule } from '@angular/service-worker';
-registerLocaleData(localeEs, 'es-ES', localeEsExtra);
-
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeEs);
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, ServiceWorkerModule.register('ngsw-worker.js', {
-  enabled: !isDevMode(),
-  // Register the ServiceWorker as soon as the application is stable
-  // or after 30 seconds (whichever comes first).
-  registrationStrategy: 'registerWhenStable:30000'
-})],
+    enabled: !isDevMode(),
+    registrationStrategy: 'registerWhenStable:30000'
+  })],
   providers: [
     provideAnimationsAsync(),
     provideHotToastConfig({

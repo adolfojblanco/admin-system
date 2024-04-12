@@ -1,93 +1,63 @@
-<div class="d-flex justify-content-between animate__animated animate__fadeIn">
-  <h1>
-    Listado de Productos
-    <span *ngIf="products" class="badge badge-light">{{
-      products.length
-    }}</span>
-  </h1>
-  <button mat-raised-button color="primary" (click)="newProduct()">
-    Producto<mat-icon>add_circle</mat-icon>
-  </button>
-</div>
-<mat-divider class="mb-3"></mat-divider>
-<mat-card class="mx-auto animate__animated animate__fadeIn">
-  <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource">
-      <!-- id Column -->
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef><strong>Id. </strong></th>
-        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-      </ng-container>
-
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef><strong>Producto</strong></th>
-        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-      </ng-container>
-
-      <!-- Category Column -->
-      <ng-container matColumnDef="category">
-        <th mat-header-cell *matHeaderCellDef><strong>Categoria</strong></th>
-        <td mat-cell *matCellDef="let element">
-          {{ element.category.name }}
-        </td>
-      </ng-container>
-
-      <!-- Price Column -->
-      <ng-container matColumnDef="price">
-        <th mat-header-cell *matHeaderCellDef><strong>Precio</strong></th>
-        <td mat-cell *matCellDef="let element">
-          {{ element.price | currency : "EUR" }}
-        </td>
-      </ng-container>
-
-      <!-- Active Column -->
-      <ng-container matColumnDef="is_active">
-        <th mat-header-cell *matHeaderCellDef><strong>Activo</strong></th>
-        <td mat-cell *matCellDef="let element">
-          <mat-icon *ngIf="element.is_active" class="text-success"
-            >done</mat-icon
-          >
-          <mat-icon *ngIf="!element.is_active" class="text-danger"
-            >block</mat-icon
-          >
-        </td>
-      </ng-container>
-
-      <!-- Has stock column -->
-      <ng-container matColumnDef="has_stock">
-        <th mat-header-cell *matHeaderCellDef><strong>Stock</strong></th>
-        <td mat-cell *matCellDef="let element">
-          <mat-icon *ngIf="element.has_stock" class="text-success"
-            >done</mat-icon
-          >
-          <mat-icon *ngIf="!element.has_stock" class="text-danger"
-            >block</mat-icon
-          >
-        </td>
-      </ng-container>
-
-      <!-- Actions Column -->
-      <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef class="text-center">
-          <strong>Acciones</strong>
-        </th>
-        <td mat-cell *matCellDef="let element" class="text-center">
-          <a mat-raised-button color="primary" (click)="editProduct(element)"
-            >Detalle<mat-icon>info</mat-icon></a
-          >
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
-
-    <mat-paginator
-      [pageSizeOptions]="[5, 10, 20]"
-      showFirstLastButtons
-      aria-label="Select page of periodic elements"
-    >
-    </mat-paginator>
+<div class="row">
+  <div class="d-flex justify-content-between animate__animated animate__fadeIn">
+    <h1>
+      Listado de Productos
+      <span *ngIf="products" class="badge badge-light">{{
+        products.length
+      }}</span>
+    </h1>
+    <button mat-raised-button color="primary" (click)="newProduct()">
+      Producto<mat-icon>add_circle</mat-icon>
+    </button>
   </div>
-</mat-card>
+</div>
+<hr />
+<div class="row mx-auto animate__animated animate__fadeIn mt-2">
+  <div class="card">
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"><strong>#</strong></th>
+            <th scope="col"><strong>Producto</strong></th>
+            <th scope="col"><strong>Categoria</strong></th>
+            <th scope="col"><strong>Precio</strong></th>
+            <th scope="col"><strong>Activo</strong></th>
+            <th scope="col"><strong>Tiene Stock</strong></th>
+            <th scope="col" class="text-center"><strong>Acciones</strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ product.name }}</td>
+            <td>{{ product.category.name }}</td>
+            <td>
+              {{ product.price | currency : "EUR" : "symbol" : ".2-2" : "es" }}
+            </td>
+            <td>
+              <i
+                class="bi bi-power h4"
+                [ngClass]="product.is_active ? 'text-success' : 'text-danger'"
+              ></i>
+            </td>
+            <td>
+              <i
+                class="h4"
+                [ngClass]="product.has_stock ? 'bi bi-toggle-on text-success' : 'bi bi-toggle-off text-danger'"
+              ></i>
+            </td>
+            <th scope="row" class="text-center">
+              <button class="btn btn-primary btn-sm mx-2">
+                <i class="bi bi-info-circle"></i>
+              </button>
+              <button class="btn btn-danger text-light btn-sm" (click)="editProduct(product)">
+                <i class="bi bi-pencil-square"></i>
+              </button>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
