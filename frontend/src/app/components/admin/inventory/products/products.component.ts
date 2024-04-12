@@ -14,13 +14,14 @@ export class ProductsComponent implements OnInit {
   public products!: Product[];
   private dialog = inject(MatDialog);
   public dataSource = this.products;
+  public displayedColumns: string[] = ['name', 'category', 'price', 'is_active', 'has_stock', 'actions'];
 
   ngOnInit(): void {
     this.loadProducts();
   }
 
   loadProducts(): void {
-    this.productService.getAllProducts().subscribe(res => { this.products = res });
+    this.productService.getAllProducts().subscribe(res => { this.dataSource = res });
   }
 
   /** Add new Product */
