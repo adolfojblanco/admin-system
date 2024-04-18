@@ -1,6 +1,6 @@
 from rest_framework.routers import DefaultRouter
 from django.urls import path
-from .views import CategoryApiViewSet, ProductApiViewSet
+from .views import CategoryApiViewSet, ProductApiViewSet, active_categories
 
 router_inventory = DefaultRouter()
 
@@ -13,5 +13,5 @@ router_inventory.register(
 )
 
 urlpatterns = [
-
+    path('categories/active-categories/', active_categories, name='active_categories_list'),
 ] + router_inventory.urls

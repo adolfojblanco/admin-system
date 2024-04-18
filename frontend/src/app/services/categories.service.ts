@@ -26,4 +26,9 @@ export class CategoriesService {
   editCategory(category: Category): Observable<Category> {
     return this.http.put<Category>(`${this.urlEndPoint}/${category.id}/`, category);
   }
+
+  /** Active categories */
+  getActiveCategories(): Observable<Category[]> {
+    return this.http.get<Category[]>(`${this.urlEndPoint}/active-categories/`);
+  }
 }

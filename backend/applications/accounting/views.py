@@ -6,13 +6,13 @@ from .serializer import MovementSerializer, SupplierSerializer
 
 # Create your views here.
 class MovementViewSet(ModelViewSet):
-    permision_clases = [IsAdminUser]
+    permision_classes = [IsAdminUser]
     queryset = Movement.objects.all().order_by('name')
     serializer_class = MovementSerializer
 
 
 class SupplierViewSet(ModelViewSet):
-    permision_clases = [IsAdminUser]
+    permision_classes = [IsAdminUser]
     queryset = Supplier.objects.all().order_by('name')
     serializer_class = SupplierSerializer
 
