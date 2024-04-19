@@ -32,10 +32,11 @@ INSTALLED_APPS = [
     "corsheaders",
 
     # Local apps
-    'applications.users.apps.UsersConfig',
-    'applications.inventories.apps.InventoriesConfig',
-    'applications.accounting.apps.AccountingConfig',
-    'applications.tasks'
+    'applications.users',
+    'applications.inventories',
+    'applications.accounting',
+    'applications.tasks',
+    'applications.pos'
 
 ]
 

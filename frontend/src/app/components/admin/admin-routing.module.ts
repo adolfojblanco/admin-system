@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { DesktopComponent } from './desktop/desktop.component';
+import { PosModule } from './pos/pos.module';
 
 const routes: Routes = [
   {
@@ -26,6 +27,11 @@ const routes: Routes = [
         path: 'accounting',
         loadChildren: () =>
           import('./accounting/accounting.module').then((a) => a.AccountingModule),
+      },
+      {
+        path: 'pos',
+        loadChildren: () =>
+          import('./pos/pos.module').then((p) => p.PosModule),
       },
     ],
   },
