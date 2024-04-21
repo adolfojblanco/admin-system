@@ -8,6 +8,9 @@ from rest_framework_simplejwt.views import (
 
 from .views import UserApiViewSet, UserView
 
+
+app_name = "users"
+
 router_user = DefaultRouter()
 
 router_user.register(

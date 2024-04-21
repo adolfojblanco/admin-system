@@ -2,6 +2,9 @@ from rest_framework.routers import DefaultRouter
 from django.urls import path
 from .views import CategoryApiViewSet, ProductApiViewSet, active_categories
 
+
+
+
 router_inventory = DefaultRouter()
 
 router_inventory.register(

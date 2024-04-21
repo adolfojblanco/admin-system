@@ -4,8 +4,6 @@ from applications.users.models import Client, User
 from applications.inventories.models import Product
 
 
-# Create your models here.
-
 # Rooms Model
 class Room(models.Model):
     name = models.CharField('Nombre', null=False, blank=False, max_length=100)
@@ -37,7 +35,7 @@ class Payment(models.Model):
 # Table Model
 class Table(models.Model):
     number = models.CharField('Número', null=False, blank=False, max_length=100)
-    room = models.ForeignKey(Room, on_delete=models.CASCADE, null=False, blank=False)
+    room = models.ForeignKey(Room, on_delete=models.CASCADE, null=False, blank=False, related_name="tables")
     is_open = models.BooleanField('Abierta', default=False)
     is_active = models.BooleanField('Activa', default=True)
 
@@ -62,12 +60,11 @@ class Invoice(models.Model):
         self.number = "{}-{}".format(self.pk, datetime.today().strftime('%m%d'))
         super(Invoice, self).save(*args, **kwargs)
 
-
     def __str__(self):
         return self.number
-    
+
     class Meta:
-        verbose_name='Factura'
+        verbose_name = 'Factura'
         verbose_name_plural = 'Facturas'
         ordering = ['number']
 

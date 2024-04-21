@@ -29,11 +29,13 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router_user.urls)),
-    path('api/', include('applications.users.router')),
-    path('api/task/', include('applications.tasks.urls')),
+    path('api/users/', include('applications.users.router', namespace="users")),
+    path('api/task/', include('applications.tasks.urls', namespace="tasks")),
     path('api/inventory/', include('applications.inventories.router')),
     path('api/accounting/', include('applications.accounting.router')),
+    path("api/pos/", include('applications.pos.urls', namespace="pos")),
 
+    #Documentation
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redocs/', schema_view.with_ui('redoc',
          cache_timeout=0), name='schema-redoc'),
