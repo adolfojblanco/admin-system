@@ -11,6 +11,10 @@ import { MovemetType } from '../../../../models/Expense';
 })
 export class AcountingDialogComponent implements OnInit {
 
+  constructor() {
+    
+  }
+
   public fb = inject(FormBuilder);
   public accountService = inject(AccountService)
   public suppliers: Supplier[] = [];

@@ -15,6 +15,7 @@ class UserApiViewSet(ModelViewSet):
     permission_classes = [IsAdminUser]
     serializer_class = UserSerializer
     queryset = User.objects.all()
+    http_method_names = ['get', 'post', 'put', 'delete']
 
     def create(self, request, *args, **kwargs):
         request.data['password'] = make_password(request.data['password'])
@@ -28,6 +29,7 @@ class UserApiViewSet(ModelViewSet):
         else:
             request.data['password'] = request.user.password
         return super().partial_update(request, *args, **kwargs)
+
 
 
 class UserView(APIView):

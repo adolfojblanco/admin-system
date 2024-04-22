@@ -29,7 +29,7 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router_user.urls)),
-    path('api/users/', include('applications.users.router', namespace="users")),
+    path('api/auth/', include('applications.users.router')),
     path('api/task/', include('applications.tasks.urls', namespace="tasks")),
     path('api/inventory/', include('applications.inventories.router')),
     path('api/accounting/', include('applications.accounting.router')),

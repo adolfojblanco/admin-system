@@ -27,7 +27,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Tree Party apps
     'rest_framework',
+    'rest_framework_simplejwt',
     'drf_yasg',
     "corsheaders",
 
@@ -72,7 +75,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'app.wsgi.application'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {

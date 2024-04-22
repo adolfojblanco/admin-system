@@ -49,7 +49,7 @@ export class AccountingComponent implements OnInit {
   }
 
   /** Edición de gastos */
-  editExpense(expense: Expense) {
+  detailExpense(expense: Expense) {
     const dialogRef = this.dialog.open(AcountingDialogComponent, {
       width: '450px'
     });
