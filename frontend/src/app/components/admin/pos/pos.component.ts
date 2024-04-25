@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { PosService } from '../../../services/pos.service';
 
 @Component({
   selector: 'app-pos',

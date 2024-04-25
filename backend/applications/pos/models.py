@@ -7,6 +7,7 @@ from applications.inventories.models import Product
 # Rooms Model
 class Room(models.Model):
     name = models.CharField('Nombre', null=False, blank=False, max_length=100)
+    slug = models.SlugField(max_length=200, unique=True, blank=True)
     is_active = models.BooleanField('Activa', default=True)
 
     class Meta:

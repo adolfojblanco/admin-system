@@ -22,12 +22,10 @@
 
       <p>
         <mat-form-field class="full-width" appearance="fill">
-          <mat-label>Categoria</mat-label>
-          <mat-select formControlName="category">
-            <mat-option
-              *ngFor="let supplier of suppliers"
-              [value]="supplier.id"
-            >
+          <mat-label>Proveedor</mat-label>
+          <mat-select formControlName="supplier"
+          >
+            <mat-option *ngFor="let supplier of suppliers">
               {{ supplier.name }}
             </mat-option>
           </mat-select>
@@ -37,7 +35,7 @@
       <p>
         <mat-form-field class="full-width" appearance="fill">
           <mat-label>Tipo de Movimiento</mat-label>
-          <mat-select formControlName="supplier">
+          <mat-select formControlName="type">
             <mat-option value="IN">Entrada</mat-option>
             <mat-option value="OUT">Salida</mat-option>
           </mat-select>
@@ -80,7 +78,6 @@
     <button
       mat-raised-button
       color="primary"
-      [disabled]="expenseForm.invalid"
       [mat-dialog-close]="true"
       (click)="submit()"
     >

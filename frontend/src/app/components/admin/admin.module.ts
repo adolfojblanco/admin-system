@@ -11,7 +11,16 @@ import { TaskDialogComponent } from './desktop/task-dialog/task-dialog.component
 import { ShoppingItemComponent } from './desktop/shopping-item/shopping-item.component';
 
 @NgModule({
-  declarations: [AdminComponent, AccountingComponent, DesktopComponent, TaskDialogComponent, ShoppingItemComponent],
-  imports: [CommonModule, AdminRoutingModule, MaterialModule, ReactiveFormsModule],
+  declarations: [
+    AdminComponent,
+    AccountingComponent,
+    DesktopComponent,
+    TaskDialogComponent,
+    ShoppingItemComponent],
+  imports: [
+    CommonModule,
+    AdminRoutingModule,
+    MaterialModule,
+    ReactiveFormsModule],
 })
 export class AdminModule { }

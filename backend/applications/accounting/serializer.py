@@ -10,7 +10,7 @@ class SupplierSerializer(serializers.ModelSerializer):
 
 
 class MovementSerializer(serializers.ModelSerializer):
-    #supplier = SupplierSerializer()
+    supplier = SupplierSerializer()
 
     class Meta:
         model = Movement

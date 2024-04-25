@@ -10,7 +10,7 @@ from .serializer import RoomSerializer, TableSerializer
 @api_view(['GET'])
 def rooms_list(request):
     if request.method == 'GET':
-        rooms = Room.objects.all()
+        rooms = Room.objects.filter(is_active=True)
         rooms_serializer = RoomSerializer(rooms, many=True)
         return Response(rooms_serializer.data, status=status.HTTP_200_OK)
     return Response({"message": "Hubo un error, no se pudo cargar"}, status=status.HTTP_400_BAD_REQUEST)

@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AccountService } from '../../../services/account.service';
 import { AcountingDialogComponent } from './acounting-dialog/acounting-dialog.component';
 import { SupplierDialogComponent } from './supplier-dialog/supplier-dialog.component';
+import { Supplier } from '../../../models/Supplier';
 
 @Component({
   selector: 'app-accounting',
@@ -17,6 +18,7 @@ export class AccountingComponent implements OnInit {
   public totalOut: number = 0;
   public totalIn: number = 0
   public totalPending: number = 0;
+  public suppliers: Supplier[] = [];
 
   public expenses: Expense[] = [];
   public dataSource = this.expenses;
@@ -27,6 +29,14 @@ export class AccountingComponent implements OnInit {
     this.loadExpenses()
   }
 
+  /** Load suppliers */
+  loadSupplier() {
+    this.accountServices.getSuppliers().subscribe((res) => {
+      this.suppliers = res;
+    })
+  }
+
+  /** load expenses */
   loadExpenses() {
     this.accountServices.getExpenses().subscribe((res) => (
       this.expenses = res,
@@ -38,6 +48,7 @@ export class AccountingComponent implements OnInit {
 
   /** Add new Expense */
   newExpense() {
+    this.loadSupplier();
     const dialogRef = this.dialog.open(AcountingDialogComponent, {
       width: '450px'
     });
@@ -51,7 +62,8 @@ export class AccountingComponent implements OnInit {
   /** Edición de gastos */
   detailExpense(expense: Expense) {
     const dialogRef = this.dialog.open(AcountingDialogComponent, {
-      width: '450px'
+      width: '450px',
+      data: expense
     });
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {

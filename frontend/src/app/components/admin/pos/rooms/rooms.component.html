@@ -1,0 +1,17 @@
+<!-- Listado de salones activos -->
+
+<div class="row">
+  <h2 class="text-center">Salones</h2>
+</div>
+<mat-divider></mat-divider>
+<div class="row mt-4">
+  <div class="d-md-flex gap-3">
+    <button
+      class="card col-sm-12 mt-3 mt-md-0 mt-lg-0 col-md-4 center"
+      *ngFor="let room of rooms"
+      (click)="openRoom(room)"
+    >
+      <div class="card-body h3">{{ room.name }}</div>
+    </button>
+  </div>
+</div>

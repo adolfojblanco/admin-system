@@ -1,8 +1,9 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, Inject, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from '../../../../services/account.service';
 import { Supplier } from '../../../../models/Supplier';
-import { MovemetType } from '../../../../models/Expense';
+import { Expense, MovemetType } from '../../../../models/Expense';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-acounting-dialog',
@@ -11,8 +12,12 @@ import { MovemetType } from '../../../../models/Expense';
 })
 export class AcountingDialogComponent implements OnInit {
 
-  constructor() {
-    
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Expense) {
+    if (data) {
+      this.expenseForm.reset(data)
+      this.expenseForm.controls['supplier'].setValue(data.supplier.id)
+      this.titleForm = 'Edición de categoria';
+    }
   }
 
   public fb = inject(FormBuilder);
@@ -30,7 +35,6 @@ export class AcountingDialogComponent implements OnInit {
   loadSupplier() {
     this.accountService.getSuppliers().subscribe((res) => {
       this.suppliers = res;
-      console.log(res)
     })
   }
 
@@ -44,10 +48,10 @@ export class AcountingDialogComponent implements OnInit {
     id: [],
     name: ['', [Validators.required]],
     type: [, [Validators.required]],
-    status: [false, [Validators.required]],
+    status: [, [Validators.required]],
     amount: [, [Validators.required, Validators.min(0)]],
-    comment: [],
-    supplier: [[Validators.required]],
+    comment: [''],
+    supplier: [, [Validators.required]],
   })
 
 }

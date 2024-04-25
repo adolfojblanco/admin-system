@@ -25,7 +25,7 @@ export class AccountService {
   }
 
   getSuppliers() {
-    return this.http.get<Supplier[]>(`${this.urlEndPoint}/`);
+    return this.http.get<Supplier[]>(`${this.urlEndPoint}/suppliers/`);
   }
 
   newExpense(expense: Expense): Observable<Expense> {
