@@ -30,6 +30,10 @@ SIMPLE_JWT = {
 DATABASES = {
     'default': {
         'ENGINE': os.getenv("DB_ENGINE_LOCAL"),
+        'OPTIONS': {
+            'sql_mode': 'traditional',
+            'init_command': 'SET storage_engine=INNODB;'
+        },
         'NAME': os.getenv("DB_NAME_LOCAL"),
         'USER': os.getenv("DB_USER_LOCAL"),
         'PASSWORD': os.getenv("DB_PASSWORD_LOCAL"),

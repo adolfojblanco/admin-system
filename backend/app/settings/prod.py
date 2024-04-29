@@ -16,6 +16,8 @@ CORS_ALLOWED_ORIGINS = [
     "https://www.admin.otreze.es"
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(hours=6),
     "REFRESH_TOKEN_LIFETIME": timedelta(hours=6),
@@ -28,6 +30,10 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 DATABASES = {
     'default': {
         'ENGINE': os.getenv("DB_ENGINE_PROD"),
+        'OPTIONS': {
+            'sql_mode': 'traditional',
+            'init_command': 'SET storage_engine=INNODB;'
+        },
         'NAME': os.getenv("DB_NAME_PROD"),
         'USER': os.getenv("DB_USER_PROD"),
         'PASSWORD': os.getenv("DB_PASSWORD_PROD"),
