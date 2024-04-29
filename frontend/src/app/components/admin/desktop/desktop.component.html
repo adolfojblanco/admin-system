@@ -90,6 +90,13 @@
     </div>
   </div>
 
+
+  echo url="https://www.duckdns.org/update domains=exampledomain&token=&ip=" | curl -k -o ~/duckdns/duck.log -K –
+  echo url="https://www.duckdns.org/update?domains=adbweb&token=b47ee7b4-3437-4d96-a059-4bcab6b18762&ip=" | curl -k -o /var/log/duckdns/duck.log -K -
+
+
+
+
   <div class="col-sm-6 mt-3 mt-md-0 mt-xl-0 mt-xxl-0">
     <div class="card">
       <div
@@ -110,7 +117,9 @@
             class="d-flex justify-content-between mt-2"
             *ngFor="let task of taskList"
           >
-            <li class="list-group-item">{{ task.title }}</li>
+            <li class="list-group-item border">
+              {{ task.title }}
+            </li>
             <button class="btn btn-sm btn-outline-danger">Completar</button>
           </div>
         </ul>

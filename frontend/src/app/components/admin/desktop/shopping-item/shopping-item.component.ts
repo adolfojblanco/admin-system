@@ -20,7 +20,7 @@ export class ShoppingItemComponent {
       this.shoppingListForm.reset(data);
     }
   }
-  
+
   public shoppingListForm: FormGroup = this.fb.group({
     id: [],
     title: ['', [Validators.required, Validators.minLength(3)]],
@@ -28,9 +28,7 @@ export class ShoppingItemComponent {
   })
 
   newItemShoppingList() {
-    this.taskService.newShoppingListItem(this.shoppingListForm.value).subscribe((res) => {
-
-    })
+    this.taskService.newShoppingListItem(this.shoppingListForm.value).subscribe();
   }
 
   isValid(name: string) { }

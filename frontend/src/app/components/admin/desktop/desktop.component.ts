@@ -35,15 +35,17 @@ export class DesktopComponent implements OnInit {
     this.loadTaskList();
   }
 
-
+  /** Load shopping list incomplete */
   loadShoppingList() {
     this.taskService.getShoppingList().subscribe((res) => this.shoppingList = res)
   }
 
+  /** Load task list incomplete */
   loadTaskList() {
     this.taskService.getTaskList().subscribe((res) => this.taskList = res)
   }
 
+  /** Complete a shopoping list item */
   completeShoppingItem(item: ShoppingList) {
     item.is_complete = true
     this.taskService.completeShoppingListItem(item).subscribe((res) => {
@@ -52,6 +54,7 @@ export class DesktopComponent implements OnInit {
     })
   }
 
+  /** Create a new  shopping list */
   newShoppingItem() {
     const dialogRef = this.dialog.open(ShoppingItemComponent, {
       width: '450px',

@@ -10,14 +10,14 @@ import { ShoppingList, TaskList } from '../models/Task';
 export class TaskService {
   private readonly urlEndPoint: string = `${environment.apiUrl}/task`;
   private http = inject(HttpClient);
-  constructor() { }
+
 
   getShoppingList(): Observable<any[]> {
     return this.http.get<any[]>(`${this.urlEndPoint}/shopping-list/`)
   }
 
-  newShoppingListItem(item: ShoppingList): Observable<any[]> {
-    return this.http.post<any[]>(`${this.urlEndPoint}/shopping-list/`, item)
+  newShoppingListItem(item: ShoppingList): Observable<ShoppingList[]> {
+    return this.http.post<ShoppingList[]>(`${this.urlEndPoint}/shopping-list/`, item)
   }
 
   completeShoppingListItem(item: ShoppingList): Observable<ShoppingList> {
@@ -31,7 +31,8 @@ export class TaskService {
 
   /** Create a task */
   newTask(item: TaskList): Observable<TaskList> {
-    return this.http.post<TaskList>(`${this.urlEndPoint}/task -list/`, item)
+    console.log(item)
+    return this.http.post<TaskList>(`${this.urlEndPoint}/tasks-list/`, item)
   }
 
   /** Complete task */

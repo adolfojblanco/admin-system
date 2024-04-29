@@ -32,7 +32,6 @@ DATABASES = {
         'USER': os.getenv("DB_USER_PROD"),
         'PASSWORD': os.getenv("DB_PASSWORD_PROD"),
         'HOST': os.getenv("DB_HOST_PROD"),
-        'PORT': os.getenv("DB_PORT_PROD"),
     }
 }
 

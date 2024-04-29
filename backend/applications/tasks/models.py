@@ -8,6 +8,7 @@ PRIORITY_TYPE = [
     ("LOW", "Baja"),
 ]
 
+
 # Shopping list model
 class ShoppingList(models.Model):
     title = models.CharField('Título', max_length=100)
