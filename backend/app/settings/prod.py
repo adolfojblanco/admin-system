@@ -29,7 +29,6 @@ DATABASES = {
         'ENGINE': os.getenv("DB_ENGINE_PROD"),
         'OPTIONS': {
             'sql_mode': 'traditional',
-            'init_command': 'SET storage_engine=INNODB;'
         },
         'NAME': os.getenv("DB_NAME_PROD"),
         'USER': os.getenv("DB_USER_PROD"),
