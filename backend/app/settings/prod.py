@@ -1,3 +1,5 @@
+import os
+
 from .base import *
 from datetime import timedelta
 
@@ -6,15 +8,10 @@ SECRET_KEY = "django-insecure-vu0872#b-96k3zu+97r%p4&y8r#v2xomn@b4a5nn(^-=n4!!es
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = [
-    "https://admin.otreze.es",
-    "https://www.admin.otreze.es",
-    "https://api-admin.otreze.es"]
 
-CORS_ALLOWED_ORIGINS = [
-    "https://admin.otreze.es",
-    "https://www.admin.otreze.es"
-]
+CSRF_TRUSTED_ORIGINS = [os.getenv("CSRF_TRUSTED_ORIGINS")]
+
+CORS_ALLOWED_ORIGINS = [os.getenv("CORS_ALLOWED_ORIGINS")]
 
 CORS_ORIGIN_ALLOW_ALL = True
 
