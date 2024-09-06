@@ -25,14 +25,12 @@ SIMPLE_JWT = {
 }
 
 # Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': os.getenv("DB_ENGINE_LOCAL"),
+        'ENGINE': "django.db.backends.mysql",
         'OPTIONS': {
             'sql_mode': 'traditional',
-            'init_command': 'SET storage_engine=INNODB;'
         },
         'NAME': os.getenv("DB_NAME_LOCAL"),
         'USER': os.getenv("DB_USER_LOCAL"),
