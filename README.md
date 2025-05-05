@@ -3,7 +3,7 @@
 
 ---
 
-## Otreze Hamburgueseria:
+## Admin System for Restaurant:
 
     - Gestion de inventario.
     - Gestion Administrativa (Compras, ventas, gastos).
@@ -36,4 +36,4 @@
 ---
 
 ## For help:
-[Adolfo Blanco](https://www.adolfoblanco.es/contacto/)
+[Adolfo Blanco](https://www.adolfob.com/contacto/)
