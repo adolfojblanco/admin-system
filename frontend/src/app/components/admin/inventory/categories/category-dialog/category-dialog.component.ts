@@ -2,7 +2,7 @@ import { Component, Inject, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
 import { Category } from '../../../../../models/Category';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CategoriesService } from '../../../../../services/categories.service';
 
 @Component({
@@ -17,7 +17,8 @@ export class CategoryDialogComponent {
   public titleForm = 'Nueva Categoria:';
   public textButton = 'Guardar';
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Category) {
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Category, public dialogRef: MatDialogRef<CategoryDialogComponent>) {
     if (data) {
       this.categoryForm.reset(data);
       this.titleForm = 'Edición de categoria';
@@ -39,12 +40,16 @@ export class CategoryDialogComponent {
     if (this.categoryForm.controls['id'].value) {
       this.categoriesServices
         .editCategory(this.categoryForm.value)
-        .subscribe((res) => console.log(res));
+        .subscribe((res) => {
+          this.dialogRef.close(this.categoryForm.value)
+          this.toast.success(
+            `${this.categoryForm.controls['name'].value}, editada correctamente`
+          );
+        })
     } else {
       this.categoriesServices
         .newCategory(this.categoryForm.value)
         .subscribe((res) => {
-          console.log(res)
           this.toast.success(
             `${this.categoryForm.controls['name'].value}, registrada correctamente`
           );
